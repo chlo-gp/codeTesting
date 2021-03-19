@@ -1,20 +1,4 @@
-function convert(valueToTranslate, arab, roman) {
-
-    if (valueToTranslate === 1) {
-        return 'I'
-    }
-    else if (valueToTranslate ==='I') {
-        return 1
-    }
-   else if (valueToTranslate === 2) {
-        return 'I'
-    }
-    else if (valueToTranslate ==='II') {
-        return 2
-    }
-}
-
-function translateNumber(num) {
+ translateNumber= (num) => {
     if(num < 1){ return "";}
     if(num >= 1000){ return "M" + translateNumber(num - 1000);}
     if(num >= 900){ return "CM" + translateNumber(num - 900);}
@@ -31,4 +15,32 @@ function translateNumber(num) {
     if(num >= 1){ return "I" + translateNumber(num - 1);}
 }
 
+ romanToArabic = (romanNumber) => {
+    const map = {
+        M: 1000,
+        D: 500,
+        C: 100,
+        L: 50,
+        X: 10,
+        V: 5,
+        I: 1,
+    };
+
+    let nums = romanNumber.split('');
+    let result = 0;
+    for (let i = 0; i < nums.length; i += 1) {
+        const first = map[nums[i]];
+        const second = map[nums[i + 1]] || 0;
+        if (first < second) {
+            result += second - first;
+            i += 1;
+        } else {
+            result += first;
+        }
+    }
+    return result;
+};
+
+
 module.exports = translateNumber
+module.exports = romanToArabic
