@@ -1,0 +1,13 @@
+on: [push]
+  branches:
+    - master
+
+jobs:
+  build:
+    name: Testing
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run a multi-line script
+        run: |
+          yarn install
+          yarn jest

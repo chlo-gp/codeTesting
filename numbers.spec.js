@@ -4,10 +4,8 @@ const matrix = require('./index.js');
 
 describe('ma première suite de tests', () => {
     test('mon premier test', () => {})
-        matrix.forEach(() => {
-            it('should ', () => {
-                //expect(translateNumber([matrix.value])).toBe([matrix.key])
-                expect(translateNumber([matrix.key])).toBe([matrix.value])
-            })
-        })
+    expect(translateNumber(146)).toBe('CXLVI')
+    expect(translateNumber(1587)).toBe('MDLXXXVII')
+    expect(translateNumber(3999)).toBe('MMMCMXCIX')
+
 })
